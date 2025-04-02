@@ -6,4 +6,4 @@ My attempt at implementing a reinforcement learning agent for trading. Inputs:
 - *cost_per_trade* = Transaction cost per executed trade
 
 Action $a_t$ is to be understood as the number of stocks held at time $t$. Using this, we conclude that the transaction cost can be calculated by
-$ |a_t - a_{t-1}| * cost_per_trade $
+$|a_t - a_{t-1}| * cost_per_trade$
