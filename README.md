@@ -7,6 +7,11 @@ My attempt at implementing a reinforcement learning agent for trading. Inputs:
 
 Action $a_t$ is to be understood as the number of stocks held at time $t$. Using this, we conclude that the transaction cost can be calculated by
 $c_t = |a_t - a_{t-1}| * c$.
+
 Hence, the total profit evolves according to the following recursive formula:
 $p_t = p_{t-1} + a_t * (cp_t - op_t) - c_t$
 where $op_t$ denotes the opening price at time $t$ and $cp_t$ denotes the closing price at time $t$.
+
+We use the log return as the reward, namely
+$r_t = \log(\frac{p_t}{p_{t-1}})$,
+as they are in opposition to arithmetic returns additive!
