@@ -1,0 +1,6 @@
+numpy>=1.23.0
+pandas>=1.5.0
+matplotlib>=3.5.0
+gymnasium==1.1.1
+yfinance==0.2.55
+jupyter
