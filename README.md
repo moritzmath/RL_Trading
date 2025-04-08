@@ -11,6 +11,7 @@ This repository includes:
 -  Technical indicators as state features:
   - A buy-and-hold strategy
   - A randomly acting agent
+    
 - Evaluation against baseline strategies (buy-and-hold and random)
 
 ## Project Structure
