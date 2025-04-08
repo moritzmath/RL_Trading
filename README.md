@@ -9,13 +9,8 @@ This repository includes:
 -  A custom OpenAI Gym-like trading environment
 -  A Q-Learning agent with epsilon-greedy exploration strategy
 -  Technical indicators as state features:
-  - Simple Moving Average (SMA)
-  - Exponential Moving Average (EMA)
-  - Moving Average Crossover
-  - Relative Strength Index (RSI)
-  - Moving Average Convergence Divergence (MACD)
-  - Bollinger Bands (BB)
-  - Stochastic Oscillator (SO)
+  - A buy-and-hold strategy
+  - A randomly acting agent
 - Evaluation against baseline strategies (buy-and-hold and random)
 
 ## Project Structure
