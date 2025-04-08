@@ -1,17 +1,52 @@
-# RL_Trading
+# Q-Learning Agent for Stock Trading
 
+This project implements a Q-Learning reinforcement learning agent that learns to trade Apple (AAPL) stock based on technical indicators. The goal is to evaluate whether a tabular Q-Learning strategy can outperform the asset itself and random strategies.
 
-My attempt at implementing a reinforcement learning agent for trading. Inputs: 
-- *Max_num_shares* = Maximal number of stocks we are allowed to hold at a time
-- *Cost_per_trade* = Transaction cost per executed trade, denoted by c
+## Overview
 
-Action $a_t$ is to be understood as the number of stocks held at time $t$. Using this, we conclude that the transaction cost can be calculated by
-$c_t = |a_t - a_{t-1}| * c$.
+This repository includes:
 
-Hence, the total profit evolves according to the following recursive formula:
-$p_t = p_{t-1} + a_t * (cp_t - op_t) - c_t$
-where $op_t$ denotes the opening price at time $t$ and $cp_t$ denotes the closing price at time $t$.
+-  A custom OpenAI Gym-like trading environment
+-  A Q-Learning agent with epsilon-greedy exploration strategy
+-  Technical indicators as state features:
+  - Simple Moving Average (SMA)
+  - Exponential Moving Average (EMA)
+  - Moving Average Crossover
+  - Relative Strength Index (RSI)
+  - Moving Average Convergence Divergence (MACD)
+  - Bollinger Bands (BB)
+  - Stochastic Oscillator (SO)
+- Evaluation against baseline strategies (buy-and-hold and random)
 
-We use the log return as the reward, namely
-$r_t = \log(\frac{p_t}{p_{t-1}})$,
-as they are in opposition to arithmetic returns additive!
+## Project Structure
+- q_learning_trading.ipynb: Main notebook for training & evaluation
+- trading_environment.py: Custom trading environment (Gym-style)
+- q_learning_agent.py: Q-Learning agent
+- technical_indicators.py: File for computation of the technical indicators
+
+## Package Requirements  
+To use this library, make sure you have the following packages installed:
+* [Numpy](https://numpy.org)
+* [Pandas](https://pandas.pydata.org)
+* [Matplotlib](https://matplotlib.org)
+* [Gymnasium](https://gymnasium.farama.org)
+* [yfinance](https://pypi.org/project/yfinance/)
+
+## Results & Evaluation
+After training, the Q-Learning agent is tested on unseen data and evaluated based on:
+- Final portfolio value
+- Cumulative returns
+- Comparison to:
+  - A buy-and-hold strategy
+  - A randomly acting agent
+    
+All metrics are visualized in the notebook.
+
+## Methodology
+The agent receives a discrete state space derived from technical indicator signals and selects a discrete trading action (stock position). The reward is based on the log change in portfolio value. Training is performed over multiple episodes with an epsilon-greedy strategy for exploration.
+
+## Notes
+- The action represents how many shares to hold, not how many to buy/sell.
+- The environment includes transaction costs and explicitly tracks cash and position.
+- The notebook supports easy comparison between Q-Learning, random, and static strategies.
+
